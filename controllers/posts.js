@@ -37,7 +37,18 @@ module.exports = {
         cloudinaryId: result.public_id,
         caption: req.body.caption,
         likes: 0,
+        portrait: 0,
+        color: 0,
+        bw: 0,
+        light: 0,
+        abstract: 0,
+        perspective: 0,
+        landscape: 0,
+        movement: 0,
+        street: 0,
+        funny: 0,	
         user: req.user.id,
+        author: req.user.userName,
       });
       console.log("Post has been added!");
       res.redirect("/profile");
@@ -59,6 +70,164 @@ module.exports = {
       console.log(err);
     }
   },
+
+
+
+  portrait: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { portrait: 1 },
+        }
+      );
+      console.log("Portrait +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  color: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { color: 1 },
+        }
+      );
+      console.log("Color +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  bw: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { bw: 1 },
+        }
+      );
+      console.log("Bw +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  light: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { light: 1 },
+        }
+      );
+      console.log("Light +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  abstract: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { abstract: 1 },
+        }
+      );
+      console.log("Abstract +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  perspective: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { perspective: 1 },
+        }
+      );
+      console.log("Perspective +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  landscape: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { landscape: 1 },
+        }
+      );
+      console.log("Landscape +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  movement: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { movement: 1 },
+        }
+      );
+      console.log("Movement +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  street: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { street: 1 },
+        }
+      );
+      console.log("Street +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+  funny: async (req, res) => {
+    try {
+      await Post.findOneAndUpdate(
+        { _id: req.params.id },
+        {
+          $inc: { funny: 1 },
+        }
+      );
+      console.log("Funny +1");
+      res.redirect(`/post/${req.params.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  },
+
+
+
+
+
+
   deletePost: async (req, res) => {
     try {
       // Find post by id
@@ -73,4 +242,51 @@ module.exports = {
       res.redirect("/profile");
     }
   },
+
+///////
+getResults: async (req, res) => {
+  try {
+    const months = ['August', 'September']; // Add more months if needed
+
+    const highestPostsByMonth = {};
+
+    const categories = ['bw', 'color', 'light', 'abstract', 'perspective', 'landscape', 'movement', 'street', 'funny'];
+
+    for (const month of months) {
+      const startDate = new Date(`2023-${month}-01`);
+      const endDate = new Date(`2023-${month}-31`);
+
+      const highestPosts = {};
+
+      for (const category of categories) {
+        const highestPost = await Post.findOne({
+          createdAt: {
+            $gte: startDate,
+            $lte: endDate
+          }
+        }).sort({ [category]: -1 });
+
+        highestPosts[category] = highestPost;
+      }
+
+      highestPostsByMonth[month] = highestPosts;
+    }
+
+    console.log(highestPostsByMonth); // Check the value of highestPostsByMonth
+
+    res.render("results.ejs", { 
+      highestPostsByMonth: highestPostsByMonth
+    });
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+
+
+
+
+ 
+
+
 };

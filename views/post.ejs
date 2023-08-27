@@ -1,37 +1,192 @@
 <%- include('partials/header') -%>
-<div class="container">
-  <div class="row justify-content-center mt-5">
-    <div class="col-6">
-      <h2><%= post.title %></h2>
-      <img class="img-fluid" src="<%= post.image%>" />
-      <div class="row justify-content-between">
+
+<%- include('partials/nav') -%>
+
+<div>
+  <div class="card-header">
+    <h2 class="card-body"><%= post.title %></h2>
+  </div>
+  
+  <div class="container-fluid">
+    <div>
+      <img class="img-fluid" src="<%= post.image%>" alt="photo">
+    </div>
+    
+    <div>
+      <p><%= post.caption %></p>
+      <br></br>
+      
+      <!--Color-->
+      <div class="row justify-content-around">
         <form
           class="col-1"
-          action="/post/likePost/<%= post.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+          action="/post/color/<%= post.id %>?_method=PUT"
+          method="POST">
+          <button class="btn btn-secondary" type="submit">Best Use of Color</button>
         </form>
-        <h3 class="col-3">Likes: <%= post.likes %></h3>
+        <h3 class="col-3"><%= post.color %></h3>
         <%if(post.user == user.id){ %>
-        <form
-          action="/post/deletePost/<%= post.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
-          <button class="btn btn-primary fa fa-trash" type="submit"></button>
-        </form>
+        
         <%}%>
       </div>
+      <!--Best Portrait-->
+      <div class="row justify-content-around">
+        <form
+          class="col-1"
+          action="/post/portrait/<%= post.id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-secondary" type="submit">Best Portrait</button>
+        </form>
+        <h3 class="col-3"><%= post.portrait %></h3>
+        <%if(post.user == user.id){ %>
+        
+        <%}%>
+      </div>
+      <!--------- Best Black and White -------------->
+      <div class="row justify-content-around">
+        <form
+          class="col-1"
+          action="/post/bw/<%= post.id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-secondary" type="submit">Best Black & White</button>
+        </form>
+        <h3 class="col-3"><%= post.bw %></h3>
+        <%if(post.user == user.id){ %>
+        
+        <%}%>
+      </div>
+    
+      <!--------- Best Use of lights and Shadows -------------->
+      <div class="row justify-content-around">
+        <form
+          class="col-1"
+          action="/post/light/<%= post.id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-secondary" type="submit">Best Use of Lights</button>
+        </form>
+        <h3 class="col-3"><%= post.light %></h3>
+        <%if(post.user == user.id){ %>
+        
+        <%}%>
+      </div>
+    
+      <!--------- Best Abstract -------------->
+      <div class="row justify-content-around">
+        <form
+          class="col-1"
+          action="/post/abstract/<%= post.id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-secondary" type="submit">Best Abstract</button>
+        </form>
+        <h3 class="col-3"><%= post.abstract %></h3>
+        <%if(post.user == user.id){ %>
+        
+        <%}%>
+      </div>
+    
+      <!--------- Best Use of Perspective -------------->
+      <div class="row justify-content-around">
+        <form
+          class="col-1"
+          action="/post/perspective/<%= post.id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-secondary" type="submit">Best Use of Perspective</button>
+        </form>
+        <h3 class="col-3"><%= post.perspective %></h3>
+        <%if(post.user == user.id){ %>
+        
+        <%}%>
+      </div>
+    
+      <!--------- Best Landscape -------------->
+      <div class="row justify-content-around">
+        <form
+          class="col-1"
+          action="/post/landscape/<%= post.id %>?_method=PUT"
+          method="POST"
+        >
+          <button class="btn btn-secondary" type="submit">Best Landscape</button>
+        </form>
+        <h3 class="col-3"><%= post.landscape %></h3>
+        <%if(post.user == user.id){ %>
+        
+        <%}%>
+      </div>
+
+    <!--------- Best Capture of Movement -------------->
+    <div class="row justify-content-around">
+      <form
+        class="col-1"
+        action="/post/movement/<%= post.id %>?_method=PUT"
+        method="POST"
+      >
+        <button class="btn btn-secondary" type="submit">Best Photo of Movement</button>
+      </form>
+      <h3 class="col-3"><%= post.movement %></h3>
+      <%if(post.user == user.id){ %>
+      
+      <%}%>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= post.caption %></p>
+
+    <!--------- Best Street Photography -------------->
+    <div class="row justify-content-around">
+      <form
+        class="col-1"
+        action="/post/street/<%= post.id %>?_method=PUT"
+        method="POST"
+      >
+        <button class="btn btn-secondary" type="submit">Best Street Photography</button>
+      </form>
+      <h3 class="col-3"><%= post.street %></h3>
+      <%if(post.user == user.id){ %>
+      
+      <%}%>
     </div>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+
+    <!--------- Funniest -------------->
+    <div class="row justify-content-around">
+      <form
+        class="col-1"
+        action="/post/funny/<%= post.id %>?_method=PUT"
+        method="POST"
+      >
+        <button class="btn btn-secondary" type="submit">Funniest Photo</button>
+      </form>
+      <h3 class="col-3"><%= post.funny %></h3>
+      <%if(post.user == user.id){ %>
+      
+      <%}%>
+    </div>
     </div>
   </div>
+
+  <div class="card-footer">
+    <!--a href="/edit/<%= post._id %>"  class="btn btn-primary">Edit</a-->
+    <%if(post.user == user.id){ %>
+      
+      
+    <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    <%}%>
+  </div>
+
+  <!--div class="card-footer">
+    <a class="btn btn-primary" href="/profile">Return to Profile</a>
+    <form action="/post/deletePost/<%= post.id %>?_method=DELETE" method="POST" style="display:inline;">
+      <button type="submit" class="btn fa fa-trash btn-danger">Delete</button>
+    </form>
+    <a class="btn btn-primary" href="/feed">Return to Feed</a>
+  </div-->
 </div>
 
+
+
 <%- include('partials/footer') -%>
+
+

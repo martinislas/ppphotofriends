@@ -1,0 +1,140 @@
+<%- include('partials/header') -%>
+<%- include('partials/nav') -%>
+
+<h2>Best of August</h2>
+<div class="container mt-4">
+    <div class="row">
+      <% for (const category in highestPostsByMonth['August']) { %>
+        <% const post = highestPostsByMonth['August'][category]; %>
+        <% if (post) { %>
+          <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+            <div class="card h-100">
+              <a href="/post/<%= post._id %>">
+                <img class="img-fluid" src="<%= post.image %>">
+              </a>
+              <h5 class="card-body">
+                Best <%= category %>
+              </h5>
+              
+              
+              <div class="card-footer">
+                <p class="card-text">
+                   
+                    <p>Photo by <%= post.author %></p>
+                </p>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      <% } %>
+    </div>
+  </div>
+
+
+  
+    <h2>Best of September</h2>
+  <div class="container mt-4">
+      <div class="row">
+        <% for (const category in highestPostsByMonth['September']) { %>
+          <% const post = highestPostsByMonth['September'][category]; %>
+          <% if (post) { %>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card h-100">
+                <a href="/post/<%= post._id %>">
+                  <img class="img-fluid" src="<%= post.image %>">
+                </a>
+                <h5 class="card-body">
+                  <%= post.title %>
+                </h5>
+                <div class="card-footer">
+                  <p class="card-text">
+                      Best <%= category %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+
+    <h2>Best of October</h2>
+  <div class="container mt-4">
+      <div class="row">
+        <% for (const category in highestPostsByMonth['October']) { %>
+          <% const post = highestPostsByMonth['October'][category]; %>
+          <% if (post) { %>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card h-100">
+                <a href="/post/<%= post._id %>">
+                  <img class="img-fluid" src="<%= post.image %>">
+                </a>
+                <h5 class="card-body">
+                  <%= post.title %>
+                </h5>
+                <div class="card-footer">
+                  <p class="card-text">
+                      Best <%= category %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+
+    <h2>Best of November</h2>
+  <div class="container mt-4">
+      <div class="row">
+        <% for (const category in highestPostsByMonth['November']) { %>
+          <% const post = highestPostsByMonth['November'][category]; %>
+          <% if (post) { %>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card h-100">
+                <a href="/post/<%= post._id %>">
+                  <img class="img-fluid" src="<%= post.image %>">
+                </a>
+                <h5 class="card-body">
+                  <%= post.title %>
+                </h5>
+                <div class="card-footer">
+                  <p class="card-text">
+                      Best <%= category %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+
+    <h2>Best of December</h2>
+  <div class="container mt-4">
+      <div class="row">
+        <% for (const category in highestPostsByMonth['December']) { %>
+          <% const post = highestPostsByMonth['December'][category]; %>
+          <% if (post) { %>
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
+              <div class="card h-100">
+                <a href="/post/<%= post._id %>">
+                  <img class="img-fluid" src="<%= post.image %>">
+                </a>
+                <h5 class="card-body">
+                  <%= post.title %>
+                </h5>
+                <div class="card-footer">
+                  <p class="card-text">
+                      Best <%= category %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+
+
+<%- include('partials/footer') -%>
